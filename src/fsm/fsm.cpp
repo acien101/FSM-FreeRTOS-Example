@@ -18,7 +18,7 @@ static void fsm_trace_transition(const struct fsm *fsm,
 	if (fsm->trace_transitions == 0 || fsm->state_name_getter == NULL) {
 		return;
 	}
-	FSM_INFO(" %s -> %s\n", fsm->state_name_getter(source), fsm->state_name_getter(target));
+	FSM_INFO(" %s -> %s\r\n", fsm->state_name_getter(source), fsm->state_name_getter(target));
 }
 
 static void fsm_log_transition(const struct fsm *fsm,
@@ -33,7 +33,7 @@ static void fsm_trace_event(const struct fsm *fsm, const struct fsm_event *event
 	if (fsm->trace_events == 0 || fsm->event_name_getter == NULL || fsm->state_name_getter == NULL) {
 		return;
 	}
-	FSM_INFO(" Dispatch event %s to state handler %s\n",
+	FSM_INFO(" Dispatch event %s to state handler %s\r\n",
 	         fsm->event_name_getter(event),
 	         fsm->state_name_getter(fsm->state));
 }
@@ -78,7 +78,7 @@ void my_fsm_init(struct fsm *fsm,
 static void _assert_if_transition(enum fsm_handler_rc rc)
 {
 	if (FSM_RC_TRANSITION == rc) {
-		printf("[fsm] Forbidden transition\n");
+		printf("[fsm] Forbidden transition\r\n");
 		/* Transition are forbidden during those events
 		 * - fsm_exit_event
 		 * - fsm_skip_step

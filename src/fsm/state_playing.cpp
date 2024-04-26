@@ -10,7 +10,7 @@ enum fsm_handler_rc state_playing(struct my_fsm *fsm, struct fsm_event const *ev
   case FSM_EVENT_SUSPENDED:
     return FSM_TRANSITION(&state_buffering);
 	case FSM_EVENT_FINISHED:
-    return FSM_TRANSITION(&state_buffering);
+    return FSM_TRANSITION(&state_closing);
 	default:
 		break;
 	}

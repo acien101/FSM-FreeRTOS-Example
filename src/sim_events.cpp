@@ -12,42 +12,29 @@ void _simulate_events_task(void *parameter){
   Serial.println("Running myTask...");
   vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
 
-  uint8_t res = 0;
-
-  res = my_fsm_dispatch_event(FSM_EVENT_CONNECTED);
-
-  Serial.println("Result =" + String(res));
+  my_fsm_dispatch_event(FSM_EVENT_CONNECTED);
 
   vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
 
-  res = my_fsm_dispatch_event(FSM_EVENT_READY);
+  my_fsm_dispatch_event(FSM_EVENT_READY);
   
-  Serial.println("Result =" + String(res));
+  vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
+
+  my_fsm_dispatch_event(FSM_EVENT_SUSPENDED);
+
+  vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
+
+  my_fsm_dispatch_event(FSM_EVENT_SUSPENDED);
 
 
   vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
 
-  res = my_fsm_dispatch_event(FSM_EVENT_SUSPENDED);
-
-  Serial.println("Result =" + String(res));
-
-
+  my_fsm_dispatch_event(FSM_EVENT_READY);
+  
   vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
 
-  res = my_fsm_dispatch_event(FSM_EVENT_SUSPENDED);
-
-  Serial.println("Result =" + String(res));
-
-  vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
-
-  res = my_fsm_dispatch_event(FSM_EVENT_READY);
-  Serial.println("Result =" + String(res));
-
-  vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
-
-  res = my_fsm_dispatch_event(FSM_EVENT_FINISHED);
-  Serial.println("Result =" + String(res));
-
+  my_fsm_dispatch_event(FSM_EVENT_FINISHED);
+  
   vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second
 
 }
